@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finance.modules.system.mapper.SysMenuMapper">
+
+
+	<!--<resultMap id="MenuModel" type="com.finance.modules.model.MenuModel" >
+		<result column="menuCode" property="key" jdbcType="VARCHAR"/>
+		<result column="menuName" property="title" jdbcType="VARCHAR"/>
+		<result column="icon" property="icon" jdbcType="VARCHAR"/>
+		<result column="parent_id" property="parentId" jdbcType="VARCHAR"/>
+		<result column="leaf_flag" property="isLeaf" jdbcType="INTEGER"/>
+	</resultMap>-->
+
+	<!-- 根据用户名查询菜单(云平台)<when test="1==userFlag || 2==userFlag"> -->
+	<select id="getMenusByUserYun" resultType="com.finance.modules.model.MenuModel">
+					select a.menuCode,a.showIndex,p.menuName,p.parentCode,p.iconSmall,p.iconLarge,p.menuLink,p.authLink
+					from sys_menu_info a left join plat_menu_info p on a.menuCode=p.menuCode
+					where a.corpCode=#{corpCode} and a.menuCode in (
+					select b.menuCode from sys_role_menu b left join sys_role_info e on b.corpCode=e.corpCode and b.roleCode=e.roleCode
+					where e.statusCode=1 and b.corpCode= #{corpCode}
+					and b.roleCode in (select c.roleCode from sys_role_user c
+					where c.corpCode= #{corpCode} and c.userCode=#{userCode})
+					union
+					select d.menuCode from sys_user_menu d where d.corpCode= #{corpCode} and d.userCode= #{userCode}
+					) and a.statusCode=1
+					and p.adapFlag != 2
+					order by a.showIndex
+	</select>
+	<!-- 根据用户名查询菜单(单机版)<when test="1==userFlag || 2==userFlag"> -->
+	<select id="getMenusByUserManager" resultType="com.finance.modules.model.MenuModel">
+				select a.menuCode,a.showIndex,p.menuName,p.parentCode,p.iconSmall,p.iconLarge,p.menuLink,p.authLink
+				from sys_menu_info a left join plat_menu_info p on a.menuCode=p.menuCode
+				where a.corpCode=#{corpCode} and a.menuCode in (
+				select b.menuCode from sys_role_menu b left join sys_role_info e on b.corpCode=e.corpCode and b.roleCode=e.roleCode
+				where e.statusCode=1 and b.corpCode= #{corpCode}
+				and b.roleCode in (select c.roleCode from sys_role_user c
+				where c.corpCode= #{corpCode} and c.userCode=#{userCode})
+				union
+				select d.menuCode from sys_user_menu d where d.corpCode= #{corpCode} and d.userCode= #{userCode}
+				) and a.statusCode=1
+				and p.adapFlag != 2
+				order by a.showIndex
+	</select>
+		<!-- 根据用户名查询菜单(手机端)<when test="1==userFlag || 2==userFlag"> -->
+	<select id="getMenusByUserWeixin" resultType="com.finance.modules.model.MenuModel">
+				select a.menuCode,a.showIndex,p.menuName,p.parentCode,p.iconSmall,p.iconLarge,p.menuLink,p.authLink
+				from sys_menu_info a left join plat_menu_info p on a.menuCode=p.menuCode
+				where a.corpCode=#{corpCode} and a.menuCode in (
+				select b.menuCode from sys_role_menu b left join sys_role_info e on b.corpCode=e.corpCode and b.roleCode=e.roleCode
+				where e.statusCode=1 and b.corpCode= #{corpCode}
+				and b.roleCode in (select c.roleCode from sys_role_user c
+				where c.corpCode= #{corpCode} and c.userCode=#{userCode})
+				union
+				select d.menuCode from sys_user_menu d where d.corpCode= #{corpCode} and d.userCode= #{userCode}
+				) and a.statusCode=1
+				and p.adapFlag = 2
+				order by a.showIndex
+	</select>
+
+</mapper>
