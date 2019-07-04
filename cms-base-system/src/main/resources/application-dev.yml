@@ -8,7 +8,7 @@ spring:
     time-zone:  GMT+8
 
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/finance?characterEncoding=UTF-8&useUnicode=true&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/c2_316?characterEncoding=UTF-8&useUnicode=true&useSSL=true
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
@@ -23,10 +23,10 @@ spring:
           max-wait: -1ms  #最大建立连接等待时间。如果超过此时间将接到异常。设为-1表示无限制。
           min-idle: 0     #最小等待连接中的数量,设 0 为没有限制
         shutdown-timeout: 100ms
-      password: '52339962'
+#      password: '52339962'
       port: 6379
 
-mybatis-plus:
-  mapper-locations: classpath*:com/finance/modules/**/xml/*Mapper.xml
- # config-location: classpath:mybatis/mybatis.cfg.xml
 
+mybatis-plus:
+  check-config-location: true
+  mapper-locations: classpath*:com/finance/modules/**/xml/*Mapper.xml

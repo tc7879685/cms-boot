@@ -63,7 +63,8 @@ public class LoginController {
         //设置超时时间
         redisUtil.expire(CommonConstant.PREFIX_USER_TOKEN+token, JwtUtil.EXPIRE_TIME/1000);
         object.put("token",token);
-
+        object.put("username",user.getUserName());
+        object.put("userInfo",user);
         result.setResult(object);
         result.success("登录成功");
     return  result;

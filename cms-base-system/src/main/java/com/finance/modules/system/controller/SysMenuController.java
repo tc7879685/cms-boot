@@ -33,7 +33,7 @@ public class SysMenuController {
      * @param token
      * @return
      */
-    @GetMapping("/getUserMenuByToken")
+    @GetMapping("/getUserPermissionByToken")
     public Result<?> getUserMenuByToken(@RequestParam(name = "token",required = true) String token){
         Result<JSONObject> result = new Result<JSONObject>();
         try {
