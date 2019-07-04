@@ -116,7 +116,7 @@
     </dependencies>
 
 
-
+    <!--编译打包mapper.xml-->
     <build>
         <resources>
             <resource>
