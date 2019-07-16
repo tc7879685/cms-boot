@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finance.modules.system.mapper.RoleInfoMapper">
+
+	<!--<resultMap id="UserModel" type="com.finance.modules.model.UserModel">
+		<result column="userUUID" property="userUUID" jdbcType="VARCHAR"></result>
+		<result column="userCode" property="userCode" jdbcType="VARCHAR"></result>
+		<result column="userName" property="userName" jdbcType="VARCHAR"></result>
+		<result column="unitCode" property="unitCode" jdbcType="VARCHAR"></result>
+		<result column="unitName" property="unitName" jdbcType="VARCHAR"></result>
+		<result column="userJob" property="userJob" jdbcType="VARCHAR"></result>
+		<result column="userIdCard" property="userIdCard" jdbcType="VARCHAR"></result>
+		<result column="userPhone" property="userPhone" jdbcType="VARCHAR"></result>
+		<result column="userMobile" property="userMobile" jdbcType="VARCHAR"></result>
+		<result column="userAddress" property="userAddress" jdbcType="VARCHAR"></result>
+		<result column="userEmail" property="userEmail" jdbcType="VARCHAR"></result>
+
+		<result column="statusCode" property="statusCode" jdbcType="INTEGER"></result>
+		<result column="statusName" property="statusName" jdbcType="VARCHAR"></result>
+
+		<result column="userMemo" property="userMemo" jdbcType="VARCHAR"></result>
+		<result column="attempts" property="attempts" jdbcType="INTEGER"></result>
+		<result column="lockFlag" property="lockFlag" jdbcType="INTEGER"></result>
+		<result column="certFlag" property="certFlag" jdbcType="INTEGER"></result>
+		<result column="certName" property="certName" jdbcType="VARCHAR"></result>
+		<result column="lockNum" property="lockNum" jdbcType="INTEGER"></result>
+		<result column="sendEmailNum" property="sendEmailNum" jdbcType="INTEGER"></result>
+	</resultMap>-->
+
+	<select id="getRoleList" parameterType="Object" resultType="java.util.HashMap">
+			select a.roleUUID,a.roleCode,a.roleName,a.parentCode,a.statusCode,a.holdFlag,a.modifyFlag,a.adminFlag,s.statusName,b.roleUUID parentUUID
+			from sys_role_info a
+			left join sys_role_info b on a.corpCode=b.corpCode and a.parentCode=b.roleCode
+			left join init_status_info s on a.statusCode=s.statusCode
+			where a.corpCode=#{corpCode}
+			order by a.showIndex
+
+
+	</select>
+
+	<select id="queryParentRole" resultType="com.finance.modules.system.entity.RoleInfo">
+		select a.roleUUID,a.roleCode,a.roleName,a.parentCode from sys_role_info a where a.corpCode=#{corpCode} and a.roleUUID=#{id}
+	</select>
+
+	<select id="queryAllMenusByCorpCode" resultType="java.util.HashMap">
+			select a.menuCode,b.menuName,b.parentCode,a.showIndex from sys_menu_info a
+			left join plat_menu_info b on a.menuCode=b.menuCode
+			where a.corpCode=#{corpCode} and a.statusCode=1 order by a.showIndex
+
+	</select>
+
+	<select id="queryCurrentMenu" resultType="java.lang.String">
+			select m.menuCode from plat_menu_info m
+			where m.menuCode in (
+				select a.menuCode from sys_role_menu a where a.corpCode=#{corpCode} and a.roleCode in (
+					select b.roleCode from sys_role_info b where b.corpCode=#{corpCode} and b.roleUUID=#{roleUUID} and b.statusCode=1
+				)
+			) and m.statusCode=1 order by showIndex
+	</select>
+</mapper>

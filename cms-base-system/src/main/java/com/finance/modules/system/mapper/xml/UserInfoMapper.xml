@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finance.modules.system.mapper.UserInfoMapper">
+
+	<resultMap id="UserModel" type="com.finance.modules.model.UserModel">
+		<result column="userUUID" property="userUUID" jdbcType="VARCHAR"></result>
+		<result column="userCode" property="userCode" jdbcType="VARCHAR"></result>
+		<result column="userName" property="userName" jdbcType="VARCHAR"></result>
+		<result column="unitCode" property="unitCode" jdbcType="VARCHAR"></result>
+		<result column="unitName" property="unitName" jdbcType="VARCHAR"></result>
+		<result column="userJob" property="userJob" jdbcType="VARCHAR"></result>
+		<result column="userIdCard" property="userIdCard" jdbcType="VARCHAR"></result>
+		<result column="userPhone" property="userPhone" jdbcType="VARCHAR"></result>
+		<result column="userMobile" property="userMobile" jdbcType="VARCHAR"></result>
+		<result column="userAddress" property="userAddress" jdbcType="VARCHAR"></result>
+		<result column="userEmail" property="userEmail" jdbcType="VARCHAR"></result>
+
+		<result column="statusCode" property="statusCode" jdbcType="INTEGER"></result>
+		<result column="statusName" property="statusName" jdbcType="VARCHAR"></result>
+
+		<result column="userMemo" property="userMemo" jdbcType="VARCHAR"></result>
+		<result column="attempts" property="attempts" jdbcType="INTEGER"></result>
+		<result column="lockFlag" property="lockFlag" jdbcType="INTEGER"></result>
+		<result column="certFlag" property="certFlag" jdbcType="INTEGER"></result>
+		<result column="certName" property="certName" jdbcType="VARCHAR"></result>
+		<result column="lockNum" property="lockNum" jdbcType="INTEGER"></result>
+		<result column="sendEmailNum" property="sendEmailNum" jdbcType="INTEGER"></result>
+	</resultMap>
+
+	<!-- 根据用户名查询 -->
+	<select id= "getUserByName"  resultType="com.finance.modules.system.entity.UserInfo">
+		 select * from  sys_user_info where corpCode = #{corpCode} and  userCode = #{userName}
+	</select>
+
+
+	<!-- 根据用户名查询 -->
+	<select id= "getUserList" parameterType="Object"  resultType="com.finance.modules.model.UserModel">
+		 select a.userUUID,a.userCode,a.userName,a.userJob,a.statusCode,s.statusName,u.unitName,a.lockFlag,a.certFlag,a.certName
+		 from sys_user_info a
+		 left join sys_unit_info u on  a.corpCode=u.corpCode and a.unitCode=u.unitCode
+		 left join init_status_info s on a.statusCode=s.statusCode
+		 where a.statusCode != -1 and a.corpCode=#{userInfo.corpCode}
+	</select>
+
+</mapper>

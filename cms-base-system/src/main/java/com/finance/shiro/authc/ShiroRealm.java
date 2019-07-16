@@ -5,7 +5,7 @@ import com.finance.common.system.util.JwtUtil;
 import com.finance.common.util.RedisUtil;
 import com.finance.common.util.oConvertUtils;
 import com.finance.modules.system.entity.UserInfo;
-import com.finance.modules.system.service.UserInfoService;
+import com.finance.modules.system.service.IUserInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -32,7 +32,7 @@ public class ShiroRealm extends AuthorizingRealm {
 
 	@Autowired
 	@Lazy
-	private UserInfoService userInfoService;
+	private IUserInfoService userInfoService;
 	@Autowired
 	@Lazy
 	private RedisUtil redisUtil;

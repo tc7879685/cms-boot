@@ -30,3 +30,10 @@ spring:
 mybatis-plus:
   check-config-location: true
   mapper-locations: classpath*:com/finance/modules/**/xml/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: false
+
+
+logging:
+  level:
+    com.finance.modules.system.mapper : debug

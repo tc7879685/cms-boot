@@ -1,7 +1,7 @@
 package com.finance.shiro.authc.aop;
 
+import com.finance.common.constant.DefContants;
 import com.finance.shiro.authc.JwtToken;
-import com.finance.shiro.vo.DefContants;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;

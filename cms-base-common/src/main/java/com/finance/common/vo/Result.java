@@ -11,7 +11,6 @@ import java.io.Serializable;
  * @email jeecgos@163.com
  * @date  2019年1月19日
  */
-@Data
 public class Result<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -68,6 +67,9 @@ public class Result<T> implements Serializable {
 		r.setSuccess(false);
 		return r;
 	}
+
+
+
 	
 	public static Result<Object> ok() {
 		Result<Object> r = new Result<Object>();
@@ -91,5 +93,45 @@ public class Result<T> implements Serializable {
 		r.setCode(CommonConstant.SC_OK_200);
 		r.setResult(data);
 		return r;
+	}
+
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public void setCode(Integer code) {
+		this.code = code;
+	}
+
+	public void setResult(T result) {
+		this.result = result;
+	}
+
+	public void setTimestamp(long timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	public boolean isSuccess() {
+		return success;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public Integer getCode() {
+		return code;
+	}
+
+	public T getResult() {
+		return result;
+	}
+
+	public long getTimestamp() {
+		return timestamp;
 	}
 }

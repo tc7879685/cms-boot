@@ -1,15 +1,20 @@
 package com.finance.modules.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.finance.modules.model.UserModel;
 import com.finance.modules.system.entity.UserInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * 用户mapper接口
  */
 @Mapper
-public interface UserInfoMapper {
+public interface UserInfoMapper extends BaseMapper<UserInfo> {
 
     /**
      * 通过用户账号查询用户信息
@@ -22,4 +27,8 @@ public interface UserInfoMapper {
      * @return
      */
      UserInfo getUserByName(@Param("userName")String userName,@Param("corpCode")String corpCode);
+
+
+    public List<UserModel> getUserList(Page page, UserInfo userInfo);
+
 }

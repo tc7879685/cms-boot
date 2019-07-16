@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finance.modules.system.mapper.UnitInfoMapper">
+
+	<!--<resultMap id="UserModel" type="com.finance.modules.model.UserModel">
+		<result column="userUUID" property="userUUID" jdbcType="VARCHAR"></result>
+		<result column="userCode" property="userCode" jdbcType="VARCHAR"></result>
+		<result column="userName" property="userName" jdbcType="VARCHAR"></result>
+		<result column="unitCode" property="unitCode" jdbcType="VARCHAR"></result>
+		<result column="unitName" property="unitName" jdbcType="VARCHAR"></result>
+		<result column="userJob" property="userJob" jdbcType="VARCHAR"></result>
+		<result column="userIdCard" property="userIdCard" jdbcType="VARCHAR"></result>
+		<result column="userPhone" property="userPhone" jdbcType="VARCHAR"></result>
+		<result column="userMobile" property="userMobile" jdbcType="VARCHAR"></result>
+		<result column="userAddress" property="userAddress" jdbcType="VARCHAR"></result>
+		<result column="userEmail" property="userEmail" jdbcType="VARCHAR"></result>
+
+		<result column="statusCode" property="statusCode" jdbcType="INTEGER"></result>
+		<result column="statusName" property="statusName" jdbcType="VARCHAR"></result>
+
+		<result column="userMemo" property="userMemo" jdbcType="VARCHAR"></result>
+		<result column="attempts" property="attempts" jdbcType="INTEGER"></result>
+		<result column="lockFlag" property="lockFlag" jdbcType="INTEGER"></result>
+		<result column="certFlag" property="certFlag" jdbcType="INTEGER"></result>
+		<result column="certName" property="certName" jdbcType="VARCHAR"></result>
+		<result column="lockNum" property="lockNum" jdbcType="INTEGER"></result>
+		<result column="sendEmailNum" property="sendEmailNum" jdbcType="INTEGER"></result>
+	</resultMap>-->
+
+	<select id="queryUnitList" parameterType="Object" resultType="java.util.HashMap">
+			select a.unitUUID,a.unitCode,a.unitName,a.parentCode,a.unitType,a.organCode,a.statusCode,u.typeName,s.statusName,b.unitUUID parentUUID
+			from sys_unit_info a
+			left join sys_unit_info b on a.corpCode=b.corpCode and a.parentCode=b.unitCode
+			left join sys_unit_type u on a.corpCode=u.corpCode and a.unitType=u.typeCode
+			left join init_status_info s on a.statusCode=s.statusCode
+			where a.corpCode=#{corpCode} order by a.showIndex
+	</select>
+
+
+</mapper>

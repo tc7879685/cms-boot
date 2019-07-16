@@ -3,7 +3,7 @@ package com.finance.shiro.web;
 import com.finance.common.system.util.JwtUtil;
 import com.finance.common.util.PasswordUtil;
 import com.finance.modules.system.entity.UserInfo;
-import com.finance.modules.system.service.UserInfoService;
+import com.finance.modules.system.service.IUserInfoService;
 import com.finance.shiro.vo.ResponseBean;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.UnauthorizedException;
@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class TestWebController {
  
-    private UserInfoService userService;
+    private IUserInfoService userService;
  
     @Autowired
-    public void setService(UserInfoService userService) {
+    public void setService(IUserInfoService userService) {
         this.userService = userService;
     }
  

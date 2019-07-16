@@ -1,14 +1,16 @@
 package com.finance.modules.system.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.finance.common.aspect.annotation.AutoLog;
 import com.finance.common.constant.CommonConstant;
+import com.finance.common.constant.DefContants;
+import com.finance.common.system.api.ISysBaseAPI;
 import com.finance.common.system.util.JwtUtil;
 import com.finance.common.util.PasswordUtil;
 import com.finance.common.util.RedisUtil;
 import com.finance.common.vo.Result;
 import com.finance.modules.system.entity.UserInfo;
-import com.finance.modules.system.service.UserInfoService;
-import com.finance.shiro.vo.DefContants;
+import com.finance.modules.system.service.IUserInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -27,9 +29,12 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController {
 
     @Autowired
-    private UserInfoService userInfoService;
+    private IUserInfoService userInfoService;
     @Autowired
     private RedisUtil redisUtil;
+    @Autowired
+    ISysBaseAPI iSysBaseAPI;
+
 
     /**
      * 登录
@@ -67,6 +72,7 @@ public class LoginController {
         object.put("userInfo",user);
         result.setResult(object);
         result.success("登录成功");
+        iSysBaseAPI.addLog(corpCode,userCode,"登陆成功",1);
     return  result;
 
     }
