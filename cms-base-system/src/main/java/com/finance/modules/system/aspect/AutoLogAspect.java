@@ -25,8 +25,8 @@ import java.util.Date;
 /**
  * 系统日志，切面处理类
  * 
- * @Author scott
- * @email jeecgos@163.com
+ * @Author tangc
+ * @email
  * @Date 2018年1月14日
  */
 @Aspect

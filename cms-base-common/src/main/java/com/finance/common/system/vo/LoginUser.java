@@ -13,7 +13,7 @@ import java.util.Date;
  * 在线用户信息
  * </p>
  *
- * @Author scott
+ * @Author tangc
  * @since 2018-12-20
  */
 @Data

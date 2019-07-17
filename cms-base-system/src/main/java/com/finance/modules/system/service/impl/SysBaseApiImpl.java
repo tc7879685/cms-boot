@@ -22,7 +22,7 @@ import java.util.Date;
 
 /**
  * @Description: 底层共通业务API，提供其他独立模块调用
- * @Author: scott
+ * @Author: tangc
  * @Date:2019-4-20 
  * @Version:V1.0
  */

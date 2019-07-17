@@ -2,7 +2,7 @@ package com.finance.common.constant;
 
 /**
  * 	系统通告 - 发布状态
- * @Author LeeShaoQing
+ * @Author tangc
  *
  */
 public interface CommonSendStatus {

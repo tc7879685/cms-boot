@@ -70,10 +70,10 @@ public class DictAspect {
                         log.error("json解析失败"+e.getMessage(),e);
                     }
                     JSONObject item = JSONObject.parseObject(json);
-                    //update-begin--Author:scott -- Date:20190603 ----for：解决继承实体字段无法翻译问题------
+                    //update-begin--Author:tangc -- Date:20190603 ----for：解决继承实体字段无法翻译问题------
                     //for (Field field : record.getClass().getDeclaredFields()) {
                     for (Field field : oConvertUtils.getAllFields(record)) {
-                    //update-end--Author:scott  -- Date:20190603 ----for：解决继承实体字段无法翻译问题------
+                    //update-end--Author:tangc  -- Date:20190603 ----for：解决继承实体字段无法翻译问题------
                         if (field.getAnnotation(Dict.class) != null) {
                             String code = field.getAnnotation(Dict.class).dicCode();
                             String text = field.getAnnotation(Dict.class).dicText();

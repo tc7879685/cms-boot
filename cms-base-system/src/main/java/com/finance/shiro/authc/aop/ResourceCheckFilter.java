@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @Author Scott
+ * @Author tangc
  * @create 2019-02-01 15:56
  * @desc 鉴权请求URL访问权限拦截器
  */

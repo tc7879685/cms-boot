@@ -5,9 +5,7 @@ package com.finance.model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Data
 public class TreeModel implements Serializable {

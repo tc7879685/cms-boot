@@ -7,8 +7,8 @@ import java.io.Serializable;
 
 /**
  *   接口返回数据格式
- * @author scott
- * @email jeecgos@163.com
+ * @author tangc
+ * @email
  * @date  2019年1月19日
  */
 public class Result<T> implements Serializable {

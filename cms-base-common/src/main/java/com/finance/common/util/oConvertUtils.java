@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 
 /**
  * 
- * @Author  张代浩
+ * @Author  tangc
  *
  */
 public class oConvertUtils {

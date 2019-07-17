@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @Description: 用户登录鉴权和获取用户授权
- * @Author: Scott
+ * @Author: tangc
  * @Date: 2019-4-23 8:13
  * @Version: 1.1
  */

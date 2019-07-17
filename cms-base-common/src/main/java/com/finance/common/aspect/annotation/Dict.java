@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  *  类描述:  字典注解
- * 作    者： dangzhenghui
+ * 作    者： tangc
  * 日    期： 2019年03月17日-下午9:37:16
  */
 @Target(ElementType.FIELD)
@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
 public @interface Dict {
     /**
      * 方法描述:  数据code
-     * 作    者： dangzhenghui
+     * 作    者： tangc
      * 日    期： 2019年03月17日-下午9:37:16
      *
      * @return 返回类型： String
@@ -24,7 +24,7 @@ public @interface Dict {
 
     /**
      * 方法描述:  数据Text
-     * 作    者： dangzhenghui
+     * 作    者： tangc
      * 日    期： 2019年03月17日-下午9:37:16
      *
      * @return 返回类型： String
@@ -33,7 +33,7 @@ public @interface Dict {
 
     /**
      * 方法描述: 数据字典表
-     * 作    者： dangzhenghui
+     * 作    者： tangc
      * 日    期： 2019年03月17日-下午9:37:16
      *
      * @return 返回类型： String
