@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 /**
  * @Description: 机构证书
- * @Author: jeecg-boot
+ * @Author: tangc
  * @Date:   2019-07-16
  * @Version: V1.0
  */

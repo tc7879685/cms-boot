@@ -2,6 +2,8 @@ package com.finance.modules.system.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,7 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @Description: 联行号
- * @Author: jeecg-boot
+ * @Author: tangc
  * @Date:   2019-07-16
  * @Version: V1.0
  */
@@ -21,7 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class DepositInfo {
-    @Id
+    @TableId
 	private String depositCode;
 	private String depositName;
 	private String cityCode;

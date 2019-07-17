@@ -1,6 +1,8 @@
 package com.finance.common.system.api;
 
 
+import com.finance.model.TableModel;
+
 /**
  * @Description: 底层共通业务API，提供其他独立模块调用
  * @Author: tangc
@@ -17,7 +19,9 @@ public interface ISysBaseAPI {
 	 * @param operateType
 	 */
 	void addLog(String corpCode,String userCode,String operateInfo,Integer operateType);
-	
+
+	Integer getMaxID(TableModel tableModel);
+
 	/**
 	  * 根据用户账号查询登录用户信息
 	 * @param username

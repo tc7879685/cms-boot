@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * @Description: 系统日志
- * @Author: jeecg-boot
+ * @Author: tangc
  * @Date:   2019-07-15
  * @Version: V1.0
  */

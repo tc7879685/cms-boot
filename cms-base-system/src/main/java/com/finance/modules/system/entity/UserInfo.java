@@ -1,8 +1,8 @@
 package com.finance.modules.system.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -18,7 +18,7 @@ public class UserInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
+    @TableId
     private Integer userUUID;//主键
     private String corpCode;//机构
     private String userCode;//账号

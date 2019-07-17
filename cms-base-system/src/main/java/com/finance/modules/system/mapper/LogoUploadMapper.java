@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * @Description: 存储的Logo
- * @Author: jeecg-boot
+ * @Author: tangc
  * @Date:   2019-07-16
  * @Version: V1.0
  */

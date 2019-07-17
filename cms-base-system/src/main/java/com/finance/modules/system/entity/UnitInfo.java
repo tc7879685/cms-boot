@@ -1,9 +1,9 @@
 package com.finance.modules.system.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class UnitInfo implements java.io.Serializable {
 
     private static final long serialVersionUID = 2355100185935699489L;
 
-    @Id
+    @TableId
     private Integer unitUUID;//主键
     private String corpCode;//机构
     private String unitCode;//单位代码
@@ -42,27 +42,27 @@ public class UnitInfo implements java.io.Serializable {
     private Integer holdFlag;//保留 0可删 1保留
     private Integer statusCode;//状态 1正常0禁用
 
-    @Transient
+    @TableField(exist = false) //表示不再字段映射内
     private Integer provinceUUID;//省份主键
-    @Transient
+    @TableField(exist = false)
     private Integer cityUUID;//城市主键
-    @Transient
+    @TableField(exist = false)
     private String provinceName;//省份名称
-    @Transient
+    @TableField(exist = false)
     private String cityName;//城市名称
-    @Transient
+    @TableField(exist = false)
     private String parentName;//上级信息
-    @Transient
+    @TableField(exist = false)
     private Integer selected;//是否选中
-    @Transient
+    @TableField(exist = false)
     private String holdName;//保留信息
-    @Transient
+    @TableField(exist = false)
     private String statusName;//状态信息
-    @Transient
+    @TableField(exist = false)
     private String typeName;//类别信息
-    @Transient
+    @TableField(exist = false)
     private Integer unitStatusCode;//状态 1正常0禁用 用于一条sql多个statusCode
-    @Transient
+    @TableField(exist = false)
     private List<UserInfo> userInfoList;//用户信息
 
 

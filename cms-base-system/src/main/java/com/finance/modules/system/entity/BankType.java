@@ -1,14 +1,14 @@
 package com.finance.modules.system.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import org.springframework.data.annotation.Id;
 
 /**
  * @Description: 银行类别维护
- * @Author: jeecg-boot
+ * @Author: tangc
  * @Date:   2019-07-16
  * @Version: V1.0
  */
@@ -18,7 +18,7 @@ import org.springframework.data.annotation.Id;
 @Accessors(chain = true)
 public class BankType {
 
-	@Id
+	@TableId
 	private Integer typeUUID;
 	private String corpCode;
 	private Integer bankType;

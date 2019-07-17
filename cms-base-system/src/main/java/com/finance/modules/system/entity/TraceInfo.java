@@ -14,7 +14,7 @@ import java.util.Date;
 
 /**
  * @Description: 系统日志
- * @Author: jeecg-boot
+ * @Author: tangc
  * @Date:   2019-07-15
  * @Version: V1.0
  */

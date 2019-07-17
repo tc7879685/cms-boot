@@ -1,8 +1,8 @@
 package com.finance.modules.system.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 
 
@@ -20,7 +20,7 @@ public class AreaInfo implements java.io.Serializable{
 
 	private static final long serialVersionUID = -8818229241068552896L;
 
-	@Id
+	@TableId
 	private Integer areaUUID;//主键
 	private String corpCode;//机构
 	private String areaCode;//代码

@@ -1,5 +1,6 @@
 package com.finance.modules.system.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 /**
@@ -16,6 +17,7 @@ public class RoleInfo implements java.io.Serializable {
 
 	private static final long serialVersionUID = 7635011820377996003L;
 
+	@TableId
 	private Integer roleUUID;// 主键
 	private String  corpCode;// 机构
 	private String  roleCode;// 角色代码

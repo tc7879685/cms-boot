@@ -6,8 +6,10 @@ import com.finance.common.system.controller.BaseController;
 import com.finance.common.system.model.UserBean;
 import com.finance.common.system.util.JwtUtil;
 import com.finance.common.util.SpringContextUtils;
+import com.finance.model.TableModel;
 import com.finance.modules.model.SysLoginModel;
 import com.finance.modules.system.entity.TraceInfo;
+import com.finance.modules.system.mapper.SysBaseAPIMapper;
 import com.finance.modules.system.mapper.TraceInfoMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
@@ -37,6 +39,8 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 	
 	@Resource
 	private TraceInfoMapper sysLogMapper;
+	@Resource
+	private SysBaseAPIMapper sysBaseAPIMapper;
 	/*private SysUserMapper userMapper;
 	@Autowired
 	private SysUserRoleMapper sysUserRoleMapper;
@@ -71,6 +75,11 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 		sysLog.setOperateTime(new Date());
 		//保存系统日志
 		sysLogMapper.insert(sysLog);
+	}
+
+	@Override
+	public Integer getMaxID(TableModel tableModel) {
+		return sysBaseAPIMapper.getMaxId(tableModel);
 	}
 
 	/*@Override
